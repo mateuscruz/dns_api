@@ -25,6 +25,9 @@ gem 'puma', '~> 3.11'
 # ActiveModel::Serializers for json responses
 gem 'active_model_serializers', '~> 0.10.0'
 
+# To build services and contract validations
+gem 'trailblazer-rails', ' 1.0.9'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
