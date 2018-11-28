@@ -1,6 +1,15 @@
 require "rails_helper"
 
 describe DomainNameSystem, type: :model do
+  context "associations" do
+    it "has many hosts" do
+      association_reflection = DomainNameSystem.reflect_on_association(:hosts)
+
+      expect(association_reflection.macro).to eq(:has_many)
+      expect(association_reflection.foreign_key).to eq(:dns_id)
+    end
+  end
+
   context "validations" do
     describe "#address" do
       context "when empty" do
