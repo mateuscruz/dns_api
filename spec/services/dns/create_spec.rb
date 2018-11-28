@@ -43,6 +43,7 @@ describe Dns::Create do
           result = service.(params)
 
           expect(result).to be_success
+          expect(result.record).not_to be_nil
         end
 
         it "creates a DNS record" do
