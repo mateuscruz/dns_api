@@ -10,13 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_235516) do
+ActiveRecord::Schema.define(version: 2018_11_28_004010) do
 
   create_table "domain_name_systems", force: :cascade do |t|
     t.string "address", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["address"], name: "index_domain_name_systems_on_address", unique: true
+  end
+
+  create_table "hosts", force: :cascade do |t|
+    t.integer "dns_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dns_id", "name"], name: "index_hosts_on_dns_id_and_name", unique: true
+    t.index ["dns_id"], name: "index_hosts_on_dns_id"
+    t.index ["id"], name: "index_hosts_on_id"
   end
 
 end
