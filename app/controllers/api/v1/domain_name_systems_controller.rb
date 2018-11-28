@@ -1,30 +1,53 @@
-class Api::V1::DomainNameSystemsController < ApplicationController
-  def index
-    @domains = DomainNameSystem.eager_load(:hosts).joins(:hosts)
+module Api
+  module V1
+    class DomainNameSystemsController < ApplicationController
+      def index
+        result = DnsQuery.(included: hostnames, excluded: excluded_hostnames)
 
-    render json: @domains
-  end
+        domains = result.domains
+        hosts   = result.hosts
 
-  def create
-    result = Dns::Create.(create_params)
+        render json: {
+          domains: ActiveModel::Serializer::CollectionSerializer.new(domains, each_serializer: DomainNameSystemSerializer),
+          hosts: ActiveModel::Serializer::CollectionSerializer.new(hosts, each_serializer: HostSerializer),
+          meta: { total: domains.count }
+        }
+      end
 
-    render json: {
-      success: result.success?,
-      errors: result.errors,
-      id: result.record.id
-    }
-  end
+      def create
+        result = Dns::Create.(create_params)
 
-  private
+        render json: {
+          success: result.success?,
+          errors: result.errors,
+          id: result.record.id
+        }
+      end
 
-  def create_params
-    params
-      .require(:domain_name_system)
-      .permit(:address)
-      .merge(hosts: host_params)
-  end
+      private
 
-  def host_params
-    params.fetch(:hosts, []).map { |host_params| host_params.permit(:name) }
+      def hostnames
+        filter_params.fetch(:hostnames, [])
+      end
+
+      def excluded_hostnames
+        filter_params.fetch(:excluded_hostnames, [])
+      end
+
+      def filter_params
+        params.slice(:hostnames, :excluded_hostnames)
+      end
+
+      def create_params
+        params
+          .require(:domain_name_system)
+          .permit(:address)
+          .merge(hosts: host_params)
+      end
+
+      def host_params
+        params.fetch(:hosts, []).map { |host_params| host_params.permit(:name) }
+      end
+    end
   end
 end
