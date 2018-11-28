@@ -2,6 +2,7 @@ module Dns
   class Create
     class Result
       attr_reader :errors
+      attr_accessor :record
 
       def initialize
         @errors = {}
@@ -43,7 +44,8 @@ module Dns
     attr_reader :params, :dns, :hosts, :result
 
     def create_dns
-      @dns = DomainNameSystem.new(dns_params)
+      @dns          = DomainNameSystem.new(dns_params)
+      result.record = dns
       dns.save!
     end
 
@@ -60,7 +62,7 @@ module Dns
     end
 
     def hosts_params
-      params[:hosts].map { |host_params| host_params.merge(dns: dns) }
+      params.fetch(:hosts, []).map { |host_params| host_params.merge(dns: dns) }
     end
   end
 end
