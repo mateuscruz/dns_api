@@ -1,4 +1,10 @@
 class Api::V1::DomainNameSystemsController < ApplicationController
+  def index
+    @domains = DomainNameSystem.eager_load(:hosts).joins(:hosts)
+
+    render json: @domains
+  end
+
   def create
     result = Dns::Create.(create_params)
 
