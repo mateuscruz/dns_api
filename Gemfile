@@ -25,6 +25,9 @@ gem 'puma', '~> 3.11'
 # ActiveModel::Serializers for json responses
 gem 'active_model_serializers', '~> 0.10.0'
 
+# Record pagination
+gem 'kaminari', '~> 1.1.1'
+
 # To build services and contract validations
 gem 'trailblazer-rails', ' 1.0.9'
 

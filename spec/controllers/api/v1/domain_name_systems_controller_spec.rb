@@ -1,6 +1,26 @@
 require "rails_helper"
 
 describe Api::V1::DomainNameSystemsController, type: :controller do
+  describe "#index" do
+    it "succeeds" do
+      dns      = create(:dns)
+      host     = create(:host, dns: dns)
+      metadata = { total: 1 }
+
+      get :index, params: { page: 1 }
+
+      expect(response.status).to eq(200)
+    end
+
+    context "when page param is missing" do
+      it "fails" do
+        get :index
+
+        expect(response.status).to eq(400)
+      end
+    end
+  end
+
   describe "#create" do
     context "when params are valid" do
       it "creates a dns with hostnames" do
