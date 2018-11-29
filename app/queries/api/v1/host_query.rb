@@ -9,7 +9,7 @@ module Api
       def call
         result = Host.where(dns_id: relation.select(:id))
         result = result.where.not(name: excluded) if excluded.present?
-        result.group(:name).select("hosts.*", "COUNT(DISTINCT dns_id) AS dns_count")
+        result.group(:name).select("hosts.name", "COUNT(DISTINCT dns_id) AS dns_count")
       end
 
       private
