@@ -1,6 +1,7 @@
 # DNS JSON API
 
 [![CircleCI](https://circleci.com/gh/mateuscruz/dns_api.svg?style=svg)](https://circleci.com/gh/mateuscruz/dns_api)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/mateuscruz/dns_api/maintainability)
 
 ## Dependencies
 - Ruby 2.5.1
