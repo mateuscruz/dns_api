@@ -10,9 +10,10 @@ module Api
         end
       end
 
-      def initialize(included: [], excluded: [])
+      def initialize(included: [], excluded: [], page: 1)
         @included = included
         @excluded = excluded
+        @page     = page
         @domains  = DomainNameSystem.left_joins(:hosts)
       end
 
@@ -24,12 +25,13 @@ module Api
 
       private
 
-      attr_reader :included, :excluded, :domains, :hosts
+      attr_reader :included, :excluded, :domains, :hosts, :page
 
       def fetch_domains
         filter_included_hostnames
         filter_excluded_hostnames
         remove_duplicates
+        paginate
         fetch_hosts
       end
 
@@ -51,6 +53,10 @@ module Api
 
       def fetch_hosts
         @hosts = HostQuery.(relation: domains, excluded: excluded)
+      end
+
+      def paginate
+        @domains = domains.page(page)
       end
 
       def dns_ids_for(hostname)

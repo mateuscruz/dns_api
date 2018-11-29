@@ -7,9 +7,17 @@ describe Api::V1::DomainNameSystemsController, type: :controller do
       host     = create(:host, dns: dns)
       metadata = { total: 1 }
 
-      get :index
+      get :index, params: { page: 1 }
 
       expect(response.status).to eq(200)
+    end
+
+    context "when page param is missing" do
+      it "fails" do
+        get :index
+
+        expect(response.status).to eq(400)
+      end
     end
   end
 
