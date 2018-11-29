@@ -1,32 +1,22 @@
-# Ruby CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-ruby/ for more details
-#
-version: 2
+version: 2.0
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/ruby:2.5.1-node-browsers
+      environments:
+        RAILS_ENV: test
+        POSTGRES_USER: ubuntu
+        POSTGRES_DB: dns_api_test
+
+    - image: circleci/postgres:10-alpine-ram
+      environments:
+        POSTGRES_USER: ubuntu
+        POSTGRES_DB: dns_api_test
 jobs:
   build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/ruby:2.5.1-node-browsers
-        environments:
-          RAILS_ENV: test
-          POSTGRES_USER: ubuntu
-          POSTGRES_DB: dns_api_test
-
-      - image: circleci/postgres:10-alpine-ram
-        environments:
-          POSTGRES_USER: ubuntu
-          POSTGRES_DB: dns_api_test
-
-    working_directory: ~/repo
-
+    <<: *defaults
     steps:
       - checkout
-
-      - run:
-          name: Setup PostgreSQL client
-          command: sudo apt install postgresql-client
-
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -49,7 +39,24 @@ jobs:
           name: Setup database
           command: bundle exec rake db:create db:schema:load
 
-      # run tests!
       - run:
-          name: run tests
+          name:  Download cc-test-reporter
+          command: |
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
+      - run:
+          name: Setup PostgreSQL client
+          command: sudo apt install postgresql-client
+
+      - run:
+          name: Notify Code Climate about a pending coverage check
+          command: ./cc-test-reporter before-build
+      - run:
+          name: Run tests
           command: bundle exec rspec --color --require spec_helper spec --format progress
+      - run:
+          name: Upload report to Code Climate
+          command: |
+            ./cc-test-reporter format-coverage -t simplecov tmp/coverage/.resultset.json
+            ./cc-test-reporter upload-coverage -r e4ec3595dcfd3cb6478465dd19c59574a0b278386652c3f3d0eb4be00b1fc688
