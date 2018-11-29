@@ -7,6 +7,7 @@
 ## Dependencies
 - Ruby 2.5.1
 - Bundler 1.16+
+- PostgreSQL 10.0+
 
 ## Configuration
 
