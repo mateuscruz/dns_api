@@ -1,5 +1,7 @@
 # DNS JSON API
 
+[![CircleCI](https://circleci.com/gh/mateuscruz/dns_api.svg?style=svg)](https://circleci.com/gh/mateuscruz/dns_api)
+
 ## Dependencies
 - Ruby 2.5.1
 - Bundler 1.16+
