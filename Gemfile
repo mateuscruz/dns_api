@@ -29,7 +29,7 @@ gem 'active_model_serializers', '~> 0.10.9'
 gem 'kaminari', '~> 1.1.1'
 
 # To build services and contract validations
-gem 'trailblazer-rails', ' 1.0.9'
+gem 'trailblazer-rails', '2.1.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
