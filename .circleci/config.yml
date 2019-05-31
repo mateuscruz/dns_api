@@ -47,7 +47,7 @@ jobs:
 
       - run:
           name: Setup PostgreSQL client
-          command: sudo apt install postgresql-client
+          command: sudo apt-get update && sudo apt install postgresql-client
 
       - run:
           name: Notify Code Climate about a pending coverage check
