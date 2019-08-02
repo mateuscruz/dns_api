@@ -1,6 +1,6 @@
 # DNS JSON API
 
-[![CircleCI](https://circleci.com/gh/mateuscruz/dns_api.svg?style=svg)](https://circleci.com/gh/mateuscruz/dns_api)
+[![CircleCI](https://circleci.com/gh/mateuscruz/dns_api.svg?style=svg&circle-token=32e454fb97bc22d5f4fa9345cae6b3f3c6f345cc)](https://circleci.com/gh/mateuscruz/dns_api)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/mateuscruz/dns_api/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/46438f60f717cd558129/test_coverage)](https://codeclimate.com/github/mateuscruz/dns_api/test_coverage)
 
