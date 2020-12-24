@@ -23,7 +23,7 @@ gem 'puma', '~> 5.1'
 # gem 'capistrano-rails', group: :development
 
 # ActiveModel::Serializers for json responses
-gem 'active_model_serializers', '~> 0.10.10'
+gem 'active_model_serializers', '~> 0.10.12'
 
 # Record pagination
 gem 'kaminari', '~> 1.2.1'
