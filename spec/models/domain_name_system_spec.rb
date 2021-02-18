@@ -6,7 +6,7 @@ describe DomainNameSystem, type: :model do
       association_reflection = DomainNameSystem.reflect_on_association(:hosts)
 
       expect(association_reflection.macro).to eq(:has_many)
-      expect(association_reflection.foreign_key).to eq(:dns_id)
+      expect(association_reflection.foreign_key).to eq('dns_id')
     end
   end
 
@@ -17,7 +17,7 @@ describe DomainNameSystem, type: :model do
           dns = build(:dns, address: nil)
 
           expect(dns).not_to be_valid
-          expect(dns.errors.messages).to include(address: [ "is invalid" ])
+          expect(dns.errors.messages.to_h).to include(address: [ "is invalid" ])
         end
       end
 
@@ -27,7 +27,7 @@ describe DomainNameSystem, type: :model do
             dns = build(:dns, address: "12345678")
 
             expect(dns).not_to be_valid
-            expect(dns.errors.messages).to include(address: [ "is invalid" ])
+            expect(dns.errors.messages.to_h).to include(address: [ "is invalid" ])
           end
         end
 
@@ -39,7 +39,7 @@ describe DomainNameSystem, type: :model do
 
               expect(dns).not_to be_valid
               expect(
-                dns.errors.messages
+                dns.errors.messages.to_h
               ).to include(address: [ "has already been taken" ])
             end
           end
