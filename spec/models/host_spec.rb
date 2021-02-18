@@ -17,7 +17,7 @@ describe Host, type: :model do
           host = build(:host, dns: nil)
 
           expect(host).not_to be_valid
-          expect(host.errors.messages).to include(dns: [ "must exist" ])
+          expect(host.errors.messages.to_h).to include(dns: [ "must exist" ])
         end
       end
 
@@ -36,7 +36,7 @@ describe Host, type: :model do
           host = build(:host, name: nil)
 
           expect(host).not_to be_valid
-          expect(host.errors.messages).to include(name: [ "is invalid" ])
+          expect(host.errors.messages.to_h).to include(name: [ "is invalid" ])
         end
       end
 
@@ -46,7 +46,7 @@ describe Host, type: :model do
             host = build(:host, name: "example.")
 
             expect(host).not_to be_valid
-            expect(host.errors.messages).to include(name: [ "is invalid" ])
+            expect(host.errors.messages.to_h).to include(name: [ "is invalid" ])
           end
         end
 
@@ -58,7 +58,7 @@ describe Host, type: :model do
               host       = build(:host, dns: dns, name: other_host.name)
 
               expect(host).not_to be_valid
-              expect(host.errors.messages).to eq(name: [ "has already been taken" ])
+              expect(host.errors.messages.to_h).to eq(name: [ "has already been taken" ])
             end
           end
 

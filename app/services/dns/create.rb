@@ -34,8 +34,8 @@ module Dns
       end
       result
     rescue ActiveRecord::RecordNotSaved, ActiveRecord::RecordInvalid
-      result.errors.merge!(dns.errors.messages)
-      result.errors.merge!(hosts: hosts.map { |host| host.errors.messages })
+      result.errors.merge!(dns.errors.messages.to_h)
+      result.errors.merge!(hosts: hosts.map { |host| host.errors.messages.to_h })
       result
     end
 
