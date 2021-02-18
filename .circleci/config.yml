@@ -8,7 +8,7 @@ defaults: &defaults
         POSTGRES_USER: ubuntu
         POSTGRES_DB: dns_api_test
 
-    - image: circleci/postgres:10-alpine-ram
+    - image: circleci/postgres:12-alpine-ram
       environments:
         POSTGRES_USER: ubuntu
         POSTGRES_DB: dns_api_test

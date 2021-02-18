@@ -2,7 +2,7 @@ FROM ruby:2.5.1
 
 ENV APP_DIR=/opt/app/
 
-EXPOSE 3000
+EXPOSE $APP_PORT
 VOLUME ${APP_DIR}
 
 RUN mkdir -p ${APP_DIR}
