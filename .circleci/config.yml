@@ -40,23 +40,9 @@ jobs:
           command: bundle exec rake db:create db:schema:load
 
       - run:
-          name:  Download cc-test-reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
-      - run:
           name: Setup PostgreSQL client
           command: sudo apt-get --allow-releaseinfo-change update && sudo apt install postgresql-client
 
       - run:
-          name: Notify Code Climate about a pending coverage check
-          command: ./cc-test-reporter before-build
-      - run:
           name: Run tests
           command: bundle exec rspec --color --require spec_helper spec --format progress
-      - run:
-          name: Upload report to Code Climate
-          command: |
-            ./cc-test-reporter format-coverage -t simplecov tmp/coverage/.resultset.json
-            ./cc-test-reporter upload-coverage -r e4ec3595dcfd3cb6478465dd19c59574a0b278386652c3f3d0eb4be00b1fc688
