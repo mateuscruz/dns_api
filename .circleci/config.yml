@@ -2,7 +2,7 @@ version: 2.0
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/ruby:2.5.1-node-browsers
+    - image: circleci/ruby:3.0.0-node-browsers
       environments:
         RAILS_ENV: test
         POSTGRES_USER: ubuntu
@@ -47,7 +47,7 @@ jobs:
 
       - run:
           name: Setup PostgreSQL client
-          command: sudo apt-get update && sudo apt install postgresql-client
+          command: sudo apt-get --allow-releaseinfo-change update && sudo apt install postgresql-client
 
       - run:
           name: Notify Code Climate about a pending coverage check
