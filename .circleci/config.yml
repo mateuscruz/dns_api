@@ -2,13 +2,13 @@ version: 2.0
 defaults: &defaults
   working_directory: ~/repo
   docker:
-    - image: circleci/ruby:3.0.0-node-browsers
+    - image: cimg/ruby:3.2.2-browsers
       environments:
         RAILS_ENV: test
         POSTGRES_USER: ubuntu
         POSTGRES_DB: dns_api_test
 
-    - image: circleci/postgres:12-alpine-ram
+    - image: cimg/postgres:12.15
       environments:
         POSTGRES_USER: ubuntu
         POSTGRES_DB: dns_api_test

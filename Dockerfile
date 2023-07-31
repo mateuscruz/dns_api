@@ -1,4 +1,4 @@
-FROM ruby:3.0.0
+FROM ruby:3.2.2
 
 ENV APP_DIR=/opt/app/
 
