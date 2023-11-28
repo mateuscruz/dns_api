@@ -40,7 +40,7 @@ group :development, :test do
 
   # Automated tests
   gem 'rspec-rails', '~> 6.1'
-  gem 'factory_bot_rails', '~> 6.2.0'
+  gem 'factory_bot_rails', '~> 6.4.2'
 end
 
 group :development do
