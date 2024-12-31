@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_28_004010) do
-
+ActiveRecord::Schema[8.0].define(version: 2024_12_31_095352) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "domain_name_systems", force: :cascade do |t|
     t.string "address", null: false
@@ -31,5 +30,4 @@ ActiveRecord::Schema.define(version: 2018_11_28_004010) do
     t.index ["dns_id"], name: "index_hosts_on_dns_id"
     t.index ["id"], name: "index_hosts_on_id"
   end
-
 end
