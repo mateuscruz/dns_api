@@ -44,7 +44,7 @@ GEM
       erubi (~> 1.11)
       rails-dom-testing (~> 2.2)
       rails-html-sanitizer (~> 1.6)
-    active_model_serializers (0.10.14)
+    active_model_serializers (0.10.15)
       actionpack (>= 4.1)
       activemodel (>= 4.1)
       case_transform (>= 0.2)
@@ -246,7 +246,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.14)
+  active_model_serializers (~> 0.10.15)
   bootsnap (>= 1.1.0)
   byebug
   factory_bot_rails (~> 6.4.3)
