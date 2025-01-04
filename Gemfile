@@ -25,6 +25,8 @@ gem 'puma', '~> 6.5'
 # ActiveModel::Serializers for json responses
 gem 'active_model_serializers', '~> 0.10.15'
 
+gem 'active_record_proxy_adapters', '~> 0.1.0'
+
 # Record pagination
 gem 'kaminari', '~> 1.2.2'
 
