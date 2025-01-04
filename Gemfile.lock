@@ -49,7 +49,7 @@ GEM
       activemodel (>= 4.1)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
-    active_record_proxy_adapters (0.1.5)
+    active_record_proxy_adapters (0.2.2)
       activerecord (>= 7.0.0, < 8.1)
       activesupport (>= 7.0.0, < 8.1)
     activejob (8.0.1)
@@ -250,7 +250,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.15)
-  active_record_proxy_adapters (~> 0.1.0)
+  active_record_proxy_adapters (~> 0.2.2)
   bootsnap (>= 1.1.0)
   byebug
   factory_bot_rails (~> 6.4.3)
