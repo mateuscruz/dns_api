@@ -23,21 +23,21 @@ updates:
   - dependency-name: puma
     versions:
     - 5.2.0
-    groups:
-      sentry:
-        patterns:
-          - sentry-ruby
-          - sentry-rails
-      dotenv:
-        patterns:
-          - dotenv-rails
-          - dotenv
-      rspec:
-        patterns:
-          - rspec*
-      rails:
-        patterns:
-          - rails
-          - railties
-          - active*
-          - action*
+  groups:
+    sentry:
+      patterns:
+        - sentry-ruby
+        - sentry-rails
+    dotenv:
+      patterns:
+        - dotenv-rails
+        - dotenv
+    rspec:
+      patterns:
+        - rspec*
+    rails:
+      patterns:
+        - rails
+        - railties
+        - active*
+        - action*
