@@ -157,7 +157,7 @@ GEM
     nokogiri (1.18.10)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    pg (1.6.2)
+    pg (1.6.3)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -267,7 +267,7 @@ DEPENDENCIES
   factory_bot_rails (~> 6.5.1)
   kaminari (~> 1.2.2)
   listen (>= 3.0.5, < 3.10)
-  pg (~> 1.6.2)
+  pg (~> 1.6.3)
   puma (~> 7.1)
   rails (~> 8.1.1)
   rspec-rails (~> 8.0)
