@@ -26,7 +26,7 @@ gem 'puma', '~> 8.0'
 gem 'active_model_serializers', '~> 0.10.16'
 
 # Record pagination
-gem 'kaminari', '~> 1.2.2'
+gem 'kaminari', '~> 1.3.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
